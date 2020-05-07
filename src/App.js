@@ -20,10 +20,7 @@ function App() {
   async function handleAddRepository() {
       const response = await api.post("repositories", {
           id: uuid(),
-          title: `Novo Projeto ${Date.now()}`,
-          url: 'http://github.com/alexavier20',
-          techs: ['javascript', 'Angular'],
-          likes: 0
+          title: `Novo Projeto ${Date.now()}`,         
       });
 
       const repository = response.data;
