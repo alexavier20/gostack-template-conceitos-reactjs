@@ -7,15 +7,12 @@ const { uuid } = require("uuidv4");
 function App() {
   const [repositories, setRepository ] = useState([]);
 
-  useEffect(() => {
-    async function loadRepository() {
-        const response = await api.get("repositories");
-
-        const { data } = response;
-        setRepository(data);       
-    }
-    loadRepository();
-}, [repositories]);
+  useEffect(() => {   
+    api.get("repositories").then(response => {
+      const { data } = response;
+      setRepository(data);   
+    });    
+}, []);
 
   async function handleAddRepository() {
       const response = await api.post("repositories", {
